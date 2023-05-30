@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Chat de atendimento on-line</title>
+	<style>
+		body {
+			font-family: Arial, sans-serif;
+			background-color: #F8F8F8;
+			padding: 20px;
+		}
+
+		.container {
+			background-color: #FFFFFF;
+			border-radius: 10px;
+			box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+			max-width: 600px;
+			margin: 0 auto;
+			padding: 20px;
+		}
+
+		.chat-message {
+			display: flex;
+			margin-bottom: 10px;
+		}
+
+		.chat-message img {
+			width: 50px;
+			height: 50px;
+			border-radius: 50%;
+			margin-right: 10px;
+		}
+
+		.chat-message .message {
+			background-color: #ECECEC;
+			border-radius: 10px;
+			padding: 10px;
+		}
+
+		.chat-message .message p {
+			margin: 0;
+		}
+
+		.user-message {
+			flex-direction: row-reverse;
+		}
+
+		.user-message .message {
+			background-color: #DCF8C6;
+		}
+
+		.user-message img {
+			margin-left: 10px;
+			margin-right: 0;
+		}
+
+		h1 {
+			text-align: center;
+			margin-top: 0;
+		}
+
+		input[type="text"] {
+			width: 100%;
+			border: none;
+			border-radius: 5px;
+			padding: 10px;
+			margin-top: 10px;
+			box-sizing: border-box;
+		}
+
+		button {
+			background-color: #4CAF50;
+			color: #FFFFFF;
+			border: none;
+			border-radius: 5px;
+			padding: 10px 20px;
+			margin-top: 10px;
+			cursor: pointer;
+			box-sizing: border-box;
+		}
+
+		button:hover {
+			background-color: #3E8E41;
+		}
+
+	</style>
+</head>
+<body>
+	<div class="container">
+		<h1>Atendimento on-line</h1>
+		<div class="chat">
+			<div class="messages"></div>
+			<div class="input">
+				<input type="text" placeholder="Digite sua mensagem...">
+				<button>Enviar</button>
+			</div>
+		</div>
+	</div>
+	<script>
+		const messagesContainer = document.querySelector('.messages');
+		const inputField = document.querySelector('input');
+		const sendButton = document.querySelector('button');
+
+		sendButton.addEventListener('click', sendMessage);
+
+		function sendMessage() {
+			if (inputField.value.trim() === '') {
+				return;
+			}
+
+			const message = document.createElement('div');
+			message.classList.add('chat-message', 'user-message');
+			message.innerHTML = `
+				<img src="https://i.pravatar.cc/50?img=2">
+				<div class="message">
+					<p>${inputField.value}</p>
+				</div>
+			`;
+
+			messagesContainer.appendChild(message);
+
+			inputField.value = '';
+		}
+	</script>
+</body>
+</html>
