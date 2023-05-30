@@ -1,2 +1,2 @@
 # javascript
- Curso de JavaScript - Gustavo Guanabara
+ Inicialização de estudos com JavaScript
